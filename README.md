@@ -1,14 +1,14 @@
 <img src="https://cl.ly/2H2E3c0T1X16/Vulkan_500px_Mar15.png" width="200">
 
-# Golang Bindings for Vulkan API ![version-1.3.239](https://img.shields.io/badge/version-1.3.239-lightgrey.svg) [![GoDoc](https://pkg.go.dev/badge/github.com/goki/vulkan.svg)](https://pkg.go.dev/github.com/goki/vulkan)
+# Golang Bindings for Vulkan API ![version-1.3.239](https://img.shields.io/badge/version-1.3.239-lightgrey.svg) [![GoDoc](https://pkg.go.dev/badge/github.com/Eiton/vulkan.svg)](https://pkg.go.dev/github.com/Eiton/vulkan)
 
-Package [vulkan](https://github.com/goki/vulkan) provides Go bindings for [Vulkan](https://www.khronos.org/vulkan/) — a low-overhead, cross-platform 3D graphics and compute API. Updated February 9, 2023 — Vulkan 1.3.239.
+Package [vulkan](https://github.com/Eiton/vulkan) provides Go bindings for [Vulkan](https://www.khronos.org/vulkan/) — a low-overhead, cross-platform 3D graphics and compute API. Updated February 9, 2023 — Vulkan 1.3.239.
 
 ## Introduction
 
 The [Vulkan API](https://www.vulkan.org) is a cross-platform industry standard enabling developers to target a wide range of devices with the same graphics API.
 
-This Go binding allows one to use Vulkan API directly within Go code, avoiding adding lots of C/C++ in the projects.  The original version is at https://github.com/vulkan-go/vulkan (still on 1.1.88 from 2018) and a fork at https://github.com/goki/vulkan is being more actively maintained at this point.
+This Go binding allows one to use Vulkan API directly within Go code, avoiding adding lots of C/C++ in the projects.  The original version is at https://github.com/vulkan-go/vulkan (still on 1.1.88 from 2018) and a fork at https://github.com/Eiton/vulkan is being more actively maintained at this point.
 
 See [UPDATING](UPDATING.md) for extensive notes on how to update to newer vulkan versions as they are released.
 
@@ -24,7 +24,7 @@ Usage of this project is straightforward due to the stateless nature of Vulkan A
 Just import the package like this:
 
 ```
-import vk "github.com/goki/vulkan"
+import vk "github.com/Eiton/vulkan"
 ```
 
 Set the GetProcAddress pointer (used to look up Vulkan functions) using SetGetInstanceProcAddr or SetDefaultGetInstanceProcAddr. After that you can call Init to initialise the library. For example:
