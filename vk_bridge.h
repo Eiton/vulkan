@@ -1031,7 +1031,21 @@ VkResult callVkGetPastPresentationTimingGOOGLE(
     uint32_t*                                   pPresentationTimingCount,
     VkPastPresentationTimingGOOGLE*             pPresentationTimings);
 
-#ifdef __cplusplus
+void callVkCmdPushDescriptorSetKHR(
+    VkCommandBuffer                             commandBuffer,
+    VkPipelineBindPoint                         pipelineBindPoint,
+    VkPipelineLayout                            layout,
+    uint32_t                                    set,
+    uint32_t                                    descriptorWriteCount,
+    const VkWriteDescriptorSet*                                 pDescriptorWrites);
+
+void callVkCmdBeginRendering(
+    VkCommandBuffer                             commandBuffer,
+    const VkRenderingInfo*                         pRenderingInfo);
+    
+void callVkCmdEndRendering(
+    VkCommandBuffer                             commandBuffer);
+    #ifdef __cplusplus
 };
 #endif
 

@@ -220,6 +220,10 @@ int vkInitInstance(VkInstance instance) {
 
     vgo_vkGetRefreshCycleDurationGOOGLE = (PFN_vkGetRefreshCycleDurationGOOGLE)((*getInstanceProcAddress)(instance, "vkGetRefreshCycleDurationGOOGLE"));
     vgo_vkGetPastPresentationTimingGOOGLE = (PFN_vkGetPastPresentationTimingGOOGLE)((*getInstanceProcAddress)(instance, "vkGetPastPresentationTimingGOOGLE"));
+    
+    vgo_vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR)((*getInstanceProcAddress)(instance, "vkCmdPushDescriptorSetKHR"));
+    vgo_vkCmdBeginRendering = (PFN_vkCmdBeginRendering)((*getInstanceProcAddress)(instance, "vkCmdBeginRendering"));
+    vgo_vkCmdEndRendering = (PFN_vkCmdEndRendering)((*getInstanceProcAddress)(instance, "vkCmdEndRendering"));
     return 0;
 }
 
@@ -419,3 +423,6 @@ PFN_vkDebugReportMessageEXT vgo_vkDebugReportMessageEXT;
 PFN_vkGetRefreshCycleDurationGOOGLE vgo_vkGetRefreshCycleDurationGOOGLE;
 PFN_vkGetPastPresentationTimingGOOGLE vgo_vkGetPastPresentationTimingGOOGLE;
 
+PFN_vkCmdPushDescriptorSetKHR vgo_vkCmdPushDescriptorSetKHR;
+PFN_vkCmdBeginRendering vgo_vkCmdBeginRendering;
+PFN_vkCmdEndRendering vgo_vkCmdEndRendering;

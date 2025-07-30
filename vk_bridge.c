@@ -1423,3 +1423,23 @@ VkResult callVkGetPastPresentationTimingGOOGLE(
     return vgo_vkGetPastPresentationTimingGOOGLE(device, swapchain, pPresentationTimingCount, pPresentationTimings);
 }
 
+void callVkCmdPushDescriptorSetKHR(
+    VkCommandBuffer                             commandBuffer,
+    VkPipelineBindPoint                         pipelineBindPoint,
+    VkPipelineLayout                            layout,
+    uint32_t                                    set,
+    uint32_t                                    descriptorWriteCount,
+    const VkWriteDescriptorSet*                                 pDescriptorWrites){
+    vgo_vkCmdPushDescriptorSetKHR(commandBuffer,pipelineBindPoint, layout, set, descriptorWriteCount, pDescriptorWrites);
+}
+
+void callVkCmdBeginRendering(
+    VkCommandBuffer                             commandBuffer,
+    const VkRenderingInfo*                         pRenderingInfo){
+    vgo_vkCmdBeginRendering(commandBuffer,pRenderingInfo);
+}
+
+void callVkCmdEndRendering(
+    VkCommandBuffer                             commandBuffer){
+    vgo_vkCmdEndRendering(commandBuffer);
+}

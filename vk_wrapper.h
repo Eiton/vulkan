@@ -242,4 +242,8 @@ extern PFN_vkDebugReportMessageEXT vgo_vkDebugReportMessageEXT;
 extern PFN_vkGetRefreshCycleDurationGOOGLE vgo_vkGetRefreshCycleDurationGOOGLE;
 extern PFN_vkGetPastPresentationTimingGOOGLE vgo_vkGetPastPresentationTimingGOOGLE;
 
+// VK_KHR_push_descriptor
+extern PFN_vkCmdPushDescriptorSetKHR vgo_vkCmdPushDescriptorSetKHR;
+extern PFN_vkCmdBeginRendering vgo_vkCmdBeginRendering;
+extern PFN_vkCmdEndRendering vgo_vkCmdEndRendering;
 #endif // VULKAN_WRAPPER_H_

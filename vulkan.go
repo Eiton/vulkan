@@ -15,6 +15,7 @@ package vulkan
 #include "cgo_helpers.h"
 */
 import "C"
+import "runtime"
 import "unsafe"
 
 // CreateInstance function as declared in https://www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCreateInstance.html
@@ -1599,4 +1600,37 @@ func GetPastPresentationTimingGOOGLE(device Device, swapchain Swapchain, pPresen
 	__ret := C.callVkGetPastPresentationTimingGOOGLE(cdevice, cswapchain, cpPresentationTimingCount, cpPresentationTimings)
 	__v := (Result)(__ret)
 	return __v
+}
+
+// CmdPushDescriptorSet function as declared in https://www.khronos.org/registry/vulkan/specs/1.0-wsi_extensions/xhtml/vkspec.html#VkCmdPushDescriptorSetKHR
+func CmdPushDescriptorSet(commandBuffer CommandBuffer, pipelineBindPoint PipelineBindPoint, layout PipelineLayout, set uint32, descriptorWriteCount uint32, pDescriptorWrites []WriteDescriptorSet) {
+	ccommandBuffer, ccommandBufferAllocMap := *(*C.VkCommandBuffer)(unsafe.Pointer(&commandBuffer)), cgoAllocsUnknown
+	cpipelineBindPoint, cpipelineBindPointAllocMap := (C.VkPipelineBindPoint)(pipelineBindPoint), cgoAllocsUnknown
+	clayout, clayoutAllocMap := *(*C.VkPipelineLayout)(unsafe.Pointer(&layout)), cgoAllocsUnknown
+	cset, csetAllocMap := (C.uint32_t)(set), cgoAllocsUnknown
+	cdescriptorWriteCount, cdescriptorWriteCountAllocMap := (C.uint32_t)(descriptorWriteCount), cgoAllocsUnknown
+	cpDescriptorWrites, cpDescriptorWritesAllocMap := unpackArgSWriteDescriptorSet(pDescriptorWrites)
+	C.callVkCmdPushDescriptorSetKHR(ccommandBuffer, cpipelineBindPoint, clayout, cset, cdescriptorWriteCount, cpDescriptorWrites)
+	runtime.KeepAlive(cpDescriptorWritesAllocMap)
+	runtime.KeepAlive(cdescriptorWriteCountAllocMap)
+	runtime.KeepAlive(csetAllocMap)
+	runtime.KeepAlive(clayoutAllocMap)
+	runtime.KeepAlive(cpipelineBindPointAllocMap)
+	runtime.KeepAlive(ccommandBufferAllocMap)
+}
+
+// CmdBeginRendering function as declared in https://www.khronos.org/registry/vulkan/specs/1.0-wsi_extensions/xhtml/vkspec.html#VkCmdBeginRendering
+func CmdBeginRendering(commandBuffer CommandBuffer, pRenderingInfo RenderingInfo) {
+	ccommandBuffer, ccommandBufferAllocMap := *(*C.VkCommandBuffer)(unsafe.Pointer(&commandBuffer)), cgoAllocsUnknown
+	cpRenderingInfo, cpRenderingInfoAllocMap := pRenderingInfo.PassRef()
+	C.callVkCmdBeginRendering(ccommandBuffer, cpRenderingInfo)
+	runtime.KeepAlive(cpRenderingInfoAllocMap)
+	runtime.KeepAlive(ccommandBufferAllocMap)
+}
+
+// CmdEndRendering function as declared in https://www.khronos.org/registry/vulkan/specs/1.0-wsi_extensions/xhtml/vkspec.html#VkCmdEndRendering
+func CmdEndRendering(commandBuffer CommandBuffer) {
+	ccommandBuffer, ccommandBufferAllocMap := *(*C.VkCommandBuffer)(unsafe.Pointer(&commandBuffer)), cgoAllocsUnknown
+	C.callVkCmdEndRendering(ccommandBuffer)
+	runtime.KeepAlive(ccommandBufferAllocMap)
 }
