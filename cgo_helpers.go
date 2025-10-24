@@ -66851,9 +66851,9 @@ func unpackArgSImageMemoryBarrier(x []ImageMemoryBarrier) (unpacked *C.VkImageMe
 		return nil, nil
 	}
 	allocs = new(cgoAllocMap)
-	defer runtime.SetFinalizer(&unpacked, func(**C.VkImageMemoryBarrier) {
-		go allocs.Free()
-	})
+	// defer runtime.SetFinalizer(&unpacked, func(**C.VkImageMemoryBarrier) {
+	// 	go allocs.Free()
+	// })
 
 	len0 := len(x)
 	mem0 := allocImageMemoryBarrierMemory(len0)

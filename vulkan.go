@@ -1240,9 +1240,10 @@ func CmdWaitEvents(commandBuffer CommandBuffer, eventCount uint32, pEvents []Eve
 	cbufferMemoryBarrierCount, _ := (C.uint32_t)(bufferMemoryBarrierCount), cgoAllocsUnknown
 	cpBufferMemoryBarriers, _ := unpackArgSBufferMemoryBarrier(pBufferMemoryBarriers)
 	cimageMemoryBarrierCount, _ := (C.uint32_t)(imageMemoryBarrierCount), cgoAllocsUnknown
-	cpImageMemoryBarriers, _ := unpackArgSImageMemoryBarrier(pImageMemoryBarriers)
+	cpImageMemoryBarriers, allocs := unpackArgSImageMemoryBarrier(pImageMemoryBarriers)
 	C.callVkCmdWaitEvents(ccommandBuffer, ceventCount, cpEvents, csrcStageMask, cdstStageMask, cmemoryBarrierCount, cpMemoryBarriers, cbufferMemoryBarrierCount, cpBufferMemoryBarriers, cimageMemoryBarrierCount, cpImageMemoryBarriers)
-	packSImageMemoryBarrier(pImageMemoryBarriers, cpImageMemoryBarriers)
+	allocs.Free()
+	//packSImageMemoryBarrier(pImageMemoryBarriers, cpImageMemoryBarriers)
 	packSBufferMemoryBarrier(pBufferMemoryBarriers, cpBufferMemoryBarriers)
 	packSMemoryBarrier(pMemoryBarriers, cpMemoryBarriers)
 }
@@ -1258,9 +1259,10 @@ func CmdPipelineBarrier(commandBuffer CommandBuffer, srcStageMask PipelineStageF
 	cbufferMemoryBarrierCount, _ := (C.uint32_t)(bufferMemoryBarrierCount), cgoAllocsUnknown
 	cpBufferMemoryBarriers, _ := unpackArgSBufferMemoryBarrier(pBufferMemoryBarriers)
 	cimageMemoryBarrierCount, _ := (C.uint32_t)(imageMemoryBarrierCount), cgoAllocsUnknown
-	cpImageMemoryBarriers, _ := unpackArgSImageMemoryBarrier(pImageMemoryBarriers)
+	cpImageMemoryBarriers, allocs := unpackArgSImageMemoryBarrier(pImageMemoryBarriers)
 	C.callVkCmdPipelineBarrier(ccommandBuffer, csrcStageMask, cdstStageMask, cdependencyFlags, cmemoryBarrierCount, cpMemoryBarriers, cbufferMemoryBarrierCount, cpBufferMemoryBarriers, cimageMemoryBarrierCount, cpImageMemoryBarriers)
-	packSImageMemoryBarrier(pImageMemoryBarriers, cpImageMemoryBarriers)
+	allocs.Free()
+	//packSImageMemoryBarrier(pImageMemoryBarriers, cpImageMemoryBarriers)
 	packSBufferMemoryBarrier(pBufferMemoryBarriers, cpBufferMemoryBarriers)
 	packSMemoryBarrier(pMemoryBarriers, cpMemoryBarriers)
 }
