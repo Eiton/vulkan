@@ -59,7 +59,7 @@ func FindMemoryTypeIndex(dev PhysicalDevice,
 
 	var memProperties PhysicalDeviceMemoryProperties
 	GetPhysicalDeviceMemoryProperties(dev, &memProperties)
-	memProperties.Deref()
+	//memProperties.Deref()
 
 	var memFlags = MemoryPropertyFlags(reqMask)
 
@@ -67,7 +67,7 @@ func FindMemoryTypeIndex(dev PhysicalDevice,
 	for i := 0; i < 32; i++ {
 		if typeBits&1 == 1 { // type is available
 			memType := memProperties.MemoryTypes[i]
-			memType.Deref()
+			//memType.Deref()
 			if memType.PropertyFlags&memFlags == memFlags {
 				return uint32(i), true
 			}

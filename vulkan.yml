@@ -51,6 +51,7 @@ TRANSLATOR:
       - {action: accept, from: "^ANativeWindow$"}
       - {action: replace, from: "KHR$"}
       - {action: replace, from: "EXT$"}
+      - {action: replace, from: _T$}
     function:
       - {action: replace, from: "KHR$"}
       - {action: replace, from: "EXT$"}
@@ -79,6 +80,7 @@ TRANSLATOR:
               to: "https://www.khronos.org/registry/vulkan/specs/1.0/man/html/Vk$goname.html"}
       - {action: replace, from: _$}
       - {action: replace, from: ^_}
+      - {action: replace, from: _T$}
       - {transform: export}
   MemTips:
     - {target: VkAllocationCallbacks, self: raw}
@@ -92,37 +94,38 @@ TRANSLATOR:
       - {target: ^callVkEnumerateDeviceExtensionProperties$, tips: [0,0,ref,arr]}
       - {target: ^callVkEnumerateInstanceLayerProperties$, tips: [ref,arr]}
       - {target: ^callVkEnumerateDeviceLayerProperties$, tips: [0,ref,arr]}
-      - {target: ^callVkQueueSubmit$, tips: [0,size,arr]}
-      - {target: ^callVkFlushMappedMemoryRanges$, tips: [0,size,arr]}
-      - {target: ^callVkInvalidateMappedMemoryRanges$, tips: [0,size,arr]}
+      - {target: ^callVkQueueSubmit$, tips: [0,size,arrIn]}
+      - {target: ^callVkFlushMappedMemoryRanges$, tips: [0,size,arrIn]}
+      - {target: ^callVkInvalidateMappedMemoryRanges$, tips: [0,size,arrIn]}
       - {target: ^callVkGetImageSparseMemoryRequirements$, tips: [0,0,size,arr]}
       - {target: ^callVkGetPhysicalDeviceSparseImageFormatProperties$, tips: [0,0,0,0,0,0,size,arr]}
-      - {target: ^callVkQueueBindSparse$, tips: [0,size,arr]}
-      - {target: ^callVkResetFences$, tips: [0,size,arr]}
-      - {target: ^callVkWaitForFences$, tips: [0,size,arr]}
-      - {target: ^callVkMergePipelineCaches$, tips: [0,0,size,arr]}
-      - {target: ^callVkCreateGraphicsPipelines$, tips: [0,0,size,arr,ref,arr]}
-      - {target: ^callVkCreateComputePipelines$, tips: [0,0,size,arr,ref,arr]}
-      - {target: ^callVkUpdateDescriptorSets$, tips: [0,size,arr,size,arr]}
-      - {target: ^callVkAllocateCommandBuffers$, tips: [0,ref,arr]}
-      - {target: ^callVkFreeCommandBuffers$, tips: [0,0,size,arr]}
+      - {target: ^callVkQueueBindSparse$, tips: [0,size,arrIn]}
+      - {target: ^callVkResetFences$, tips: [0,size,arrIn]}
+      - {target: ^callVkWaitForFences$, tips: [0,size,arrIn]}
+      - {target: ^callVkMergePipelineCaches$, tips: [0,0,size,arrIn]}
+      - {target: ^callVkCreateGraphicsPipelines$, tips: [0,0,size,arrIn,ref,arrIn]}
+      - {target: ^callVkCreateComputePipelines$, tips: [0,0,size,arrIn,ref,arrIn]}
+      - {target: ^callVkUpdateDescriptorSets$, tips: [0,size,arrIn,size,arrIn]}
+      - {target: ^callVkAllocateCommandBuffers$, tips: [0,ref,arrIn]}
+      - {target: ^callVkFreeCommandBuffers$, tips: [0,0,size,arrIn]}
       - {target: ^callVkMapMemory, tips: [0,0,0,0,0,ref]}
-      - {target: ^callVkCmdSetViewport$, tips: [0,0,size,arr]}
-      - {target: ^callVkCmdSetScissor$, tips: [0,0,size,arr]}
-      - {target: ^callVkCmdBindDescriptorSets$, tips: [0,0,0,0,size,arr,size,arr]}
-      - {target: ^callVkCmdBindVertexBuffers$, tips: [0,0,size2,arr,arr]}
-      - {target: ^callVkCmdCopyBuffer$, tips: [0,0,0,size,arr]}
-      - {target: ^callVkCmdCopyImage$, tips: [0,0,0,0,0,size,arr]}
-      - {target: ^callVkCmdBlitImage$, tips: [0,0,0,0,0,size,arr]}
-      - {target: ^callVkCmdCopyBufferToImage$, tips: [0,0,0,0,size,arr]}
-      - {target: ^callVkCmdCopyImageToBuffer$, tips: [0,0,0,0,size,arr]}
-      - {target: ^callVkCmdClearColorImage$, tips: [0,0,0,ref,size,arr]}
-      - {target: ^callVkCmdClearDepthStencilImage$, tips: [0,0,0,ref,size,arr]}
-      - {target: ^callVkCmdClearAttachments$, tips: [0,size,arr,size,arr]}
-      - {target: ^callVkCmdResolveImage$, tips: [0,0,0,0,0,size,arr]}
-      - {target: ^callVkCmdWaitEvents$, tips: [0,size,arr,0,0,size,arr,size,arr,size,arr]}
-      - {target: ^callVkCmdPipelineBarrier$, tips: [0,0,0,0,size,arr,size,arr,size,arr]}
-      - {target: ^callVkCmdExecuteCommands$, tips: [0,size,arr]}
+      - {target: ^callVkCmdSetViewport$, tips: [0,0,size,arrIn]}
+      - {target: ^callVkCmdSetScissor$, tips: [0,0,size,arrIn]}
+      - {target: ^callVkCmdBindDescriptorSets$, tips: [0,0,0,0,size,arrIn,size,arrIn]}
+      - {target: ^callVkCmdBindVertexBuffers$, tips: [0,0,size2,arrIn,arrIn]}
+      - {target: ^callVkCmdCopyBuffer$, tips: [0,0,0,size,arrIn]}
+      - {target: ^callVkCmdCopyImage$, tips: [0,0,0,0,0,size,arrIn]}
+      - {target: ^callVkCmdBlitImage$, tips: [0,0,0,0,0,size,arrIn]}
+      - {target: ^callVkCmdCopyBufferToImage$, tips: [0,0,0,0,size,arrIn]}
+      - {target: ^callVkCmdCopyImageToBuffer$, tips: [0,0,0,0,size,arrIn]}
+      - {target: ^callVkCmdClearColorImage$, tips: [0,0,0,ref,size,arrIn]}
+      - {target: ^callVkCmdClearDepthStencilImage$, tips: [0,0,0,ref,size,arrIn]}
+      - {target: ^callVkCmdClearAttachments$, tips: [0,size,arrIn,size,arrIn]}
+      - {target: ^callVkCmdResolveImage$, tips: [0,0,0,0,0,size,arrIn]}
+      - {target: ^callVkCmdWaitEvents$, tips: [0,size,arrIn,0,0,size,arrIn,size,arrIn,size,arrIn]}
+      - {target: ^callVkCmdPipelineBarrier$, tips: [0,0,0,0,size,arrIn,size,arrIn,size,arrIn]}
+      - {target: ^callVkCmdExecuteCommands$, tips: [0,size,arrIn]}
+      - {target: ^callVkCmdPushDescriptorSetKHR$, tips: [0,0,0,0,size,arrIn]}
       - {target: ^callVkGetPhysicalDeviceSurfaceFormatsKHR$, tips: [0,0,ref,arr]}
       - {target: ^callVkGetPhysicalDeviceSurfacePresentModesKHR$, tips: [0,0,ref,arr]}
       - {target: ^callVkGetSwapchainImagesKHR$, tips: [0,0,ref,arr]}
@@ -130,10 +133,12 @@ TRANSLATOR:
       - {target: ^callVkGetPhysicalDeviceDisplayPlanePropertiesKHR$, tips: [0,ref,arr]}
       - {target: ^callVkGetDisplayPlaneSupportedDisplaysKHR$, tips: [0,0,ref,arr]}
       - {target: ^callVkGetDisplayModePropertiesKHR$, tips: [0,0,ref,arr]}
-      - {target: ^callVkCreateSharedSwapchainsKHR$, tips: [0,size,arr,ref,ref]}
+      - {target: ^callVkCreateSharedSwapchainsKHR$, tips: [0,size,arrIn,ref,ref]}
       # this covers all other cases
       - {target: ^callVk, tips: [sref,sref,sref,sref,sref,sref,sref,sref]}
     struct:
       - {target: VkSubpassDescription, tips: [0,0,size,arr,size,arr,arr,ref,size,arr]}
       - {target: VkGraphicsPipelineCreateInfo, tips: [0,0,0,0,arr,ref,ref,ref,ref,ref,ref,ref,ref,ref]}
       - {target: VkInstanceCreateInfo, tips: [0,0,0,ref]}
+      - {target: VkPipelineRenderingCreateInfo, tips: [0,0,0,0,arr]}
+      
