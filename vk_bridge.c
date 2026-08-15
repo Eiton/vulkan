@@ -66,6 +66,12 @@ void callVkGetPhysicalDeviceMemoryProperties(
     vgo_vkGetPhysicalDeviceMemoryProperties(physicalDevice, pMemoryProperties);
 }
 
+void callVkGetPhysicalDeviceMemoryProperties2(
+    VkPhysicalDevice                            physicalDevice,
+    VkPhysicalDeviceMemoryProperties2*           pMemoryProperties) {
+    vgo_vkGetPhysicalDeviceMemoryProperties2(physicalDevice, pMemoryProperties);
+}
+
 VkResult callVkCreateDevice(
     VkPhysicalDevice                            physicalDevice,
     const VkDeviceCreateInfo*                   pCreateInfo,

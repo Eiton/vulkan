@@ -129,6 +129,34 @@ func GetPhysicalDeviceMemoryProperties(physicalDevice PhysicalDevice, pMemoryPro
 	runtime.KeepAlive(cphysicalDeviceAllocMap)
 }
 
+// GetPhysicalDeviceMemoryProperties function as declared in https://www.khronos.org/registry/vulkan/specs/1.0/man/html/vkGetPhysicalDeviceMemoryProperties.html
+func GetPhysicalDeviceMemoryProperties2(physicalDevice PhysicalDevice, pMemoryProperties *PhysicalDeviceMemoryProperties2) {
+	cphysicalDevice, cphysicalDeviceAllocMap := *(*C.VkPhysicalDevice)(unsafe.Pointer(&physicalDevice)), cgoAllocsUnknown
+	//cpMemoryProperties, cpMemoryPropertiesAllocMap := (*C.VkPhysicalDeviceMemoryProperties2)(unsafe.Pointer(pMemoryProperties)), cgoAllocsUnknown
+	cpMemoryProperties := (*C.VkPhysicalDeviceMemoryProperties2)(C.calloc(C.size_t(1), (C.size_t)(unsafe.Sizeof([1]C.VkPhysicalDeviceMemoryProperties2{}))))
+	if cpMemoryProperties == nil {
+		panic("memory alloc error")
+	}
+	cpMemoryProperties.sType = (C.VkStructureType)(pMemoryProperties.SType)
+	cpMemoryProperties.pNext = pMemoryProperties.PNext
+	
+	C.callVkGetPhysicalDeviceMemoryProperties2(cphysicalDevice, cpMemoryProperties)
+	pMemoryProperties.MemoryProperties.MemoryHeapCount = (uint32)(cpMemoryProperties.memoryProperties.memoryHeapCount)
+	pMemoryProperties.MemoryProperties.MemoryTypeCount = (uint32)(cpMemoryProperties.memoryProperties.memoryTypeCount)
+	for i := 0; i < 16; i++ {
+		pMemoryProperties.MemoryProperties.MemoryHeaps[i].Flags = (MemoryHeapFlags)(cpMemoryProperties.memoryProperties.memoryHeaps[i].flags)
+		pMemoryProperties.MemoryProperties.MemoryHeaps[i].Size = (DeviceSize)(cpMemoryProperties.memoryProperties.memoryHeaps[i].size)
+	}
+	for i := 0; i < 32; i++ {
+		pMemoryProperties.MemoryProperties.MemoryTypes[i].PropertyFlags = (MemoryPropertyFlags)(cpMemoryProperties.memoryProperties.memoryTypes[i].propertyFlags)
+		pMemoryProperties.MemoryProperties.MemoryTypes[i].HeapIndex = (uint32)(cpMemoryProperties.memoryProperties.memoryTypes[i].heapIndex)
+	}
+	
+	C.free(unsafe.Pointer(cpMemoryProperties))
+	//runtime.KeepAlive(cpMemoryPropertiesAllocMap)
+	runtime.KeepAlive(cphysicalDeviceAllocMap)
+}
+
 // CreateDevice function as declared in https://www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCreateDevice.html
 func CreateDevice(physicalDevice PhysicalDevice, pCreateInfo *DeviceCreateInfo, pAllocator *AllocationCallbacks, pDevice *Device) Result {
 	cphysicalDevice, cphysicalDeviceAllocMap := *(*C.VkPhysicalDevice)(unsafe.Pointer(&physicalDevice)), cgoAllocsUnknown

@@ -22,6 +22,7 @@ int vkInit(void) {
     vgo_vkGetPhysicalDeviceProperties = (PFN_vkGetPhysicalDeviceProperties)(dlsym(libvulkan, "vkGetPhysicalDeviceProperties"));
     vgo_vkGetPhysicalDeviceQueueFamilyProperties = (PFN_vkGetPhysicalDeviceQueueFamilyProperties)(dlsym(libvulkan, "vkGetPhysicalDeviceQueueFamilyProperties"));
     vgo_vkGetPhysicalDeviceMemoryProperties = (PFN_vkGetPhysicalDeviceMemoryProperties)(dlsym(libvulkan, "vkGetPhysicalDeviceMemoryProperties"));
+    vgo_vkGetPhysicalDeviceMemoryProperties2 = (PFN_vkGetPhysicalDeviceMemoryProperties2)(dlsym(libvulkan, "vkGetPhysicalDeviceMemoryProperties2"));
     vgo_vkGetInstanceProcAddr = (PFN_vkGetInstanceProcAddr)(dlsym(libvulkan, "vkGetInstanceProcAddr"));
     vgo_vkGetDeviceProcAddr = (PFN_vkGetDeviceProcAddr)(dlsym(libvulkan, "vkGetDeviceProcAddr"));
     vgo_vkCreateDevice = (PFN_vkCreateDevice)(dlsym(libvulkan, "vkCreateDevice"));
@@ -217,6 +218,7 @@ PFN_vkGetPhysicalDeviceImageFormatProperties vgo_vkGetPhysicalDeviceImageFormatP
 PFN_vkGetPhysicalDeviceProperties vgo_vkGetPhysicalDeviceProperties;
 PFN_vkGetPhysicalDeviceQueueFamilyProperties vgo_vkGetPhysicalDeviceQueueFamilyProperties;
 PFN_vkGetPhysicalDeviceMemoryProperties vgo_vkGetPhysicalDeviceMemoryProperties;
+PFN_vkGetPhysicalDeviceMemoryProperties2 vgo_vkGetPhysicalDeviceMemoryProperties2;
 PFN_vkGetInstanceProcAddr vgo_vkGetInstanceProcAddr;
 PFN_vkGetDeviceProcAddr vgo_vkGetDeviceProcAddr;
 PFN_vkCreateDevice vgo_vkCreateDevice;

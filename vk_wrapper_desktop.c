@@ -41,6 +41,7 @@ int vkInitInstance(VkInstance instance) {
     vgo_vkGetPhysicalDeviceProperties = (PFN_vkGetPhysicalDeviceProperties)((*getInstanceProcAddress)(instance, "vkGetPhysicalDeviceProperties"));
     vgo_vkGetPhysicalDeviceQueueFamilyProperties = (PFN_vkGetPhysicalDeviceQueueFamilyProperties)((*getInstanceProcAddress)(instance, "vkGetPhysicalDeviceQueueFamilyProperties"));
     vgo_vkGetPhysicalDeviceMemoryProperties = (PFN_vkGetPhysicalDeviceMemoryProperties)((*getInstanceProcAddress)(instance, "vkGetPhysicalDeviceMemoryProperties"));
+    vgo_vkGetPhysicalDeviceMemoryProperties2 = (PFN_vkGetPhysicalDeviceMemoryProperties2)((*getInstanceProcAddress)(instance, "vkGetPhysicalDeviceMemoryProperties2"));
     vgo_vkGetDeviceProcAddr = (PFN_vkGetDeviceProcAddr)((*getInstanceProcAddress)(instance, "vkGetDeviceProcAddr"));
     vgo_vkCreateDevice = (PFN_vkCreateDevice)((*getInstanceProcAddress)(instance, "vkCreateDevice"));
     vgo_vkDestroyDevice = (PFN_vkDestroyDevice)((*getInstanceProcAddress)(instance, "vkDestroyDevice"));
@@ -236,6 +237,7 @@ PFN_vkGetPhysicalDeviceImageFormatProperties vgo_vkGetPhysicalDeviceImageFormatP
 PFN_vkGetPhysicalDeviceProperties vgo_vkGetPhysicalDeviceProperties;
 PFN_vkGetPhysicalDeviceQueueFamilyProperties vgo_vkGetPhysicalDeviceQueueFamilyProperties;
 PFN_vkGetPhysicalDeviceMemoryProperties vgo_vkGetPhysicalDeviceMemoryProperties;
+PFN_vkGetPhysicalDeviceMemoryProperties2 vgo_vkGetPhysicalDeviceMemoryProperties2;
 PFN_vkGetInstanceProcAddr vgo_vkGetInstanceProcAddr;
 PFN_vkGetDeviceProcAddr vgo_vkGetDeviceProcAddr;
 PFN_vkCreateDevice vgo_vkCreateDevice;
