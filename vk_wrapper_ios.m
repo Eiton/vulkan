@@ -221,9 +221,9 @@ int vkInitInstance(VkInstance instance) {
     vgo_vkDestroyDebugReportCallbackEXT = (PFN_vkDestroyDebugReportCallbackEXT)(vgo_vkGetInstanceProcAddr(instance, "vkDestroyDebugReportCallbackEXT"));
     vgo_vkDebugReportMessageEXT = (PFN_vkDebugReportMessageEXT)(vgo_vkGetInstanceProcAddr(instance, "vkDebugReportMessageEXT"));
     
-    vgo_vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR)((*getInstanceProcAddress)(instance, "vkCmdPushDescriptorSetKHR"));
-    vgo_vkCmdBeginRendering = (PFN_vkCmdBeginRendering)((*getInstanceProcAddress)(instance, "vkCmdBeginRendering"));
-    vgo_vkCmdEndRendering = (PFN_vkCmdEndRendering)((*getInstanceProcAddress)(instance, "vkCmdEndRendering"));
+    vgo_vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR)(vgo_vkGetInstanceProcAddr(instance, "vkCmdPushDescriptorSetKHR"));
+    vgo_vkCmdBeginRendering = (PFN_vkCmdBeginRendering)(vgo_vkGetInstanceProcAddr(instance, "vkCmdBeginRendering"));
+    vgo_vkCmdEndRendering = (PFN_vkCmdEndRendering)(vgo_vkGetInstanceProcAddr(instance, "vkCmdEndRendering"));
     return 0;
 }
 
