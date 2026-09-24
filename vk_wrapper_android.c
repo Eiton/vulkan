@@ -218,9 +218,9 @@ int vkInit(void) {
     vgo_vkGetRefreshCycleDurationGOOGLE = (PFN_vkGetRefreshCycleDurationGOOGLE)(dlsym(libvulkan, "vkGetRefreshCycleDurationGOOGLE"));
     vgo_vkGetPastPresentationTimingGOOGLE = (PFN_vkGetPastPresentationTimingGOOGLE)(dlsym(libvulkan, "vkGetPastPresentationTimingGOOGLE"));
     
-    vgo_vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR)((*getInstanceProcAddress)(instance, "vkCmdPushDescriptorSetKHR"));
-    vgo_vkCmdBeginRendering = (PFN_vkCmdBeginRendering)((*getInstanceProcAddress)(instance, "vkCmdBeginRendering"));
-    vgo_vkCmdEndRendering = (PFN_vkCmdEndRendering)((*getInstanceProcAddress)(instance, "vkCmdEndRendering"));
+    vgo_vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR)(dlsym(libvulkan, "vkCmdPushDescriptorSetKHR"));
+    vgo_vkCmdBeginRendering = (PFN_vkCmdBeginRendering)(dlsym(libvulkan, "vkCmdBeginRendering"));
+    vgo_vkCmdEndRendering = (PFN_vkCmdEndRendering)(dlsym(libvulkan, "vkCmdEndRendering"));
     return 0;
 }
 
